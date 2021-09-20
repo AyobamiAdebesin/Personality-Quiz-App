@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     },
     {
       'questionText': "What's your favorite course?",
-      'answers': ['analysis', 'differential equations', 'algebra', 'topology']
+      'answers': ['Analysis', 'Differential Equations', 'Algebra', 'Topology']
     },
     {
       'questionText': "What's your favorite animal?",
