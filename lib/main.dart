@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     },
     {
       'questionText': "Who's your favorite celebrity?",
-      'answers': ['olamide', 'wizkid', 'burna boy', 'Fireboy']
+      'answers': ['Olamide', 'Wizkid', 'Burna boy', 'Fireboy']
     },
   ];
 
