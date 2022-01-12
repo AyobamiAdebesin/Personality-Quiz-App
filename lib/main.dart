@@ -2,82 +2,88 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/result.dart';
 
 import 'quiz.dart';
-import 'result.dart';
 
-void main() => runApp(MyApp());
-
-//This class or widget can be recreated
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MyAppState();
-  }
+void main(List<String> args) {
+  runApp(MyApp());
 }
 
-//This class or widget is persistent
-//We have to make the fields/properties of this class final
+class MyApp extends StatefulWidget {
+  //const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
 class _MyAppState extends State<MyApp> {
-  var _questions = [
+  final _questions = const [
     {
-      'questionText': "What's your favorite color?",
-      'answers': ['red', 'yellow', 'blue', 'green']
+      'questionText': "What is your favorite color?",
+      'answers': [
+        {'text': 'Blue', 'score': 10},
+        {'text': 'Yellow', 'score': 6},
+        {'text': 'Green', 'score': 1},
+        {'text': 'Red', 'score': 3},
+      ]
     },
     {
-      'questionText': "What's your favorite course?",
-      'answers': ['Analysis', 'Differential Equations', 'Algebra', 'Topology']
+      'questionText': "What is your favorite animal",
+      'answers': [
+        {'text': 'Cat', 'score': 10},
+        {'text': 'Dog', 'score': 6},
+        {'text': 'Rabbit', 'score': 3},
+        {'text': 'Squirrel', 'score': 1}
+      ]
     },
     {
-      'questionText': "What's your favorite animal?",
-      'answers': ['cat', 'dog', 'rat', 'snake']
-    },
-    {
-      'questionText': "Who's your favorite celebrity?",
-      'answers': ['Olamide', 'Wizkid', 'Burna boy', 'Fireboy']
+      'questionText': "Whats your favorite meal?",
+      'answers': [
+        {'text': 'Rice', 'score': 10},
+        {'text': 'beans', 'score': 6},
+        {'text': 'burger', 'score': 3},
+        {'text': 'spaghetti', 'score': 1}
+      ]
     },
   ];
-
   var _questionIndex = 0;
-  void _resetQuiz(){
+  var _totalScore = 0;
+
+  void _resetQuiz() {
     setState(() {
-      _questionIndex =0;
+      _questionIndex = 0;
+      _totalScore = 0;
     });
-    
   }
 
-  // A method
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex += 1;
+      print(_questionIndex);
     });
-    print(_questionIndex); 
 
     if (_questionIndex < _questions.length) {
       print('We have more questions!');
     }
   }
 
-  //A method (An overriden method)
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'My First Flutter App',
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          backgroundColor: Colors.lightGreen,
+          title: Text('Personality Quiz App'),
+          backgroundColor: Colors.teal,
         ),
         body: _questionIndex < _questions.length
             ? Quiz(
-                answerQuestion: _answerQuestion,
                 questions: _questions,
-                questionIndex: _questionIndex,
+                questionIdx: _questionIndex,
+                answerquestion: _answerQuestion,
               )
-            : Result(_resetQuiz),
+            : Result(
+                resultScore: _totalScore,
+                resetQuizHandler: _resetQuiz,
+              ),
       ),
     );
   }

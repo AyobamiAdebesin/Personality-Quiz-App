@@ -1,155 +1,73 @@
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
-  //const Answer({ Key? key }) : super(key: key);
+  // const Answer({ Key? key }) : super(key: key);
   final selectHandler;
   final String answerText;
 
-  Answer(this.selectHandler, this.answerText);
-
+  Answer({required this.answerText, required this.selectHandler});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              textStyle: TextStyle(
-                fontSize: 15,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 10),
+          child: SizedBox(
+            width: 150,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                primary: Colors.deepPurpleAccent,
+                elevation: 20,
               ),
-              primary: Colors.lightBlueAccent),
-          child: Text(
-            answerText,
-            style: TextStyle(
-              color: Colors.white,
+              child: Text(answerText),
+              onPressed: selectHandler,
             ),
-            textAlign: TextAlign.center,
           ),
-          onPressed: selectHandler),
+        ),
+        // Container(
+        //   margin: EdgeInsets.symmetric(horizontal: 10),
+        //   child: SizedBox(
+        //     width: 150,
+        //     child: ElevatedButton(
+        //       style: ElevatedButton.styleFrom(
+        //         shape: RoundedRectangleBorder(
+        //           borderRadius: BorderRadius.circular(30),
+        //         ),
+        //         primary: Colors.blueGrey,
+        //       ),
+        //       child: Text(answerText),
+        //       onPressed: selectHandler,
+        //     ),
+        //   ),
+        // ),
+
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //   children: [
+        //     Container(
+        //       margin: EdgeInsets.symmetric(horizontal: 10),
+        //       child: SizedBox(
+        //         width: 150,
+        //         child: ElevatedButton(
+        //             style: ElevatedButton.styleFrom(
+        //               shape: RoundedRectangleBorder(
+        //                 borderRadius: BorderRadius.circular(30),
+        //               ),
+        //             ),
+        //             onPressed: selectHandler,
+        //             child: Text(
+        //               answerText,
+        //               textAlign: TextAlign.center,
+        //             )),
+        //       ),
+        //     )
+        //   ],
+        // )
+      ],
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-
-// class Answer extends StatelessWidget {
-//   final selectHandler;
-//   final String answerText;
-
-//   Answer(this.selectHandler, this.answerText);
-
-//   @override
-//   Widget build(BuildContext context) { 
-//     return Container (
-//       width: double.infinity,
-//       child:
-//       ElevatedButton(
-//         style: ElevatedButton.styleFrom(
-//           textStyle: TextStyle(
-//             color: Colors.yellowAccent,
-//             fontSize: 20,
-//           ),
-//           primary: Colors.blue,
-//         ),
-//         // style: ButtonStyle(
-//         //   backgroundColor: MaterialStateProperty.all(Colors.green),
-//         //   foregroundColor: MaterialStateProperty.all(Colors.blue),),
-//         onPressed: selectHandler,
-//         child: Text(answerText, style: TextStyle(color: Colors.white)),
-//       ),
-//     );
-//   }
-// }

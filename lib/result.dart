@@ -1,86 +1,50 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  //const ({ Key? key }) : super(key: key);
+  //const Result({Key? key}) : super(key: key);
+  final int resultScore;
+  final resetQuizHandler;
 
-  final resetHandler;
+  Result({required this.resultScore, required this.resetQuizHandler});
 
-  Result(this.resetHandler);
+  // A getter is like a method that can never receive any argument
+  String get resultPhrase {
+    String resultText;
+    if (resultScore <= 8) {
+      resultText = 'You are innocent!';
+    } else if (resultScore <= 12) {
+      resultText = 'Pretty likeable!';
+    } else if (resultScore <= 16) {
+      resultText = 'You are strange!';
+    } else {
+      resultText = 'You are so bad!';
+    }
+    return resultText;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Column(
-      children: [
-        Text(
-          'You did it',
-          style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic),
-          textAlign: TextAlign.center,
-        ),
-        TextButton(onPressed: resetHandler, child: Text('Restart Quiz!', style: TextStyle(color: Colors.blue)))
-      ],
-    ));
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            resultPhrase,
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            resultScore.toString(),
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+          ),
+          TextButton(
+            onPressed: resetQuizHandler,
+            child: Text(
+              'Restart!',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-// class Result extends StatelessWidget {
-  
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Text("You did it!"),
-//     );
-//   }
-// }

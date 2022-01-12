@@ -1,128 +1,32 @@
 import 'package:flutter/material.dart';
-
-import './answer.dart';
-import './question.dart';
+import 'question.dart';
+import 'answer.dart';
 
 class Quiz extends StatelessWidget {
-  //const Quiz({ Key? key }) : super(key//: key);
+  //const Quiz({Key? key}) : super(key: key);
+
+  final answerquestion;
   final List<Map<String, Object>> questions;
-  final answerQuestion;
-  final int questionIndex;
+  final int questionIdx;
 
   Quiz(
-      {required this.questions,
-      required this.answerQuestion,
-      required this.questionIndex});
+      {required this.answerquestion,
+      required this.questions,
+      required this.questionIdx});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Question(questions[questionIndex]['questionText'].toString()),
-
-        ///The spread operator (...) allows us to have individual list of widgets
-        ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
-          return Answer(answerQuestion, answer.toUpperCase());
-        }).toList()
+        Question(
+          (questions[questionIdx]['questionText']).toString(),
+        ),
+        ...(questions[questionIdx]['answers'] as List<Map<String, Object>>)
+            .map((answer) => Answer(
+                selectHandler: () => answerquestion(answer['score']),
+                answerText: answer['text'] as String))
+            .toList(),
       ],
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-
-// import './question.dart';
-// import './answer.dart';
-
-// class Quiz extends StatelessWidget {
-//   final List<Map<String, Object>> questions;
-//   final int questionIndex;
-//   final Function answerQuestion;
-
-//   Quiz(
-//       {required this.questions,
-//       required this.answerQuestion,
-//       required this.questionIndex});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         Question(questions[questionIndex]['questionText'].toString()),
-//         ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
-//           return Answer(answerQuestion, answer);
-//         }).toList()
-//       ],
-//     );
-//   }
-// }
