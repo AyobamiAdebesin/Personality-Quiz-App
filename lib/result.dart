@@ -32,9 +32,17 @@ class Result extends StatelessWidget {
             resultPhrase,
             style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
           ),
+          SizedBox(
+            height: 4, 
+          ),
           Text(
-            resultScore.toString(),
-            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            'Your personality score: ${resultScore.toString()}',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,),
+             textAlign: TextAlign.center,
+            
+          ),
+          SizedBox(
+            height: 4, 
           ),
           TextButton(
             onPressed: resetQuizHandler,

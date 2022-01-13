@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       ]
     },
     {
-      'questionText': "What is your favorite animal",
+      'questionText': "What's your favorite animal",
       'answers': [
         {'text': 'Cat', 'score': 10},
         {'text': 'Dog', 'score': 6},
@@ -35,12 +35,12 @@ class _MyAppState extends State<MyApp> {
       ]
     },
     {
-      'questionText': "Whats your favorite meal?",
+      'questionText': "What's your favorite meal?",
       'answers': [
         {'text': 'Rice', 'score': 10},
-        {'text': 'beans', 'score': 6},
-        {'text': 'burger', 'score': 3},
-        {'text': 'spaghetti', 'score': 1}
+        {'text': 'Snacks', 'score': 6},
+        {'text': 'Burger', 'score': 3},
+        {'text': 'Spaghetti', 'score': 1}
       ]
     },
   ];
